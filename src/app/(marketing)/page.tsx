@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import { Poppins } from 'next/font/google';
-import localFont from 'next/font/local';
-import Link from 'next/link';
+import { Poppins } from "next/font/google";
+import localFont from "next/font/local";
+import Link from "next/link";
 
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const headingFont = localFont({
   src: "../../../public/fonts/font.woff2",
@@ -47,7 +47,7 @@ export default function MarketingPage() {
         management, fuel calculations, and roster management
       </div>
       <Button className="mt-6 mb-40" size={"lg"} asChild>
-        <Link href={"/booking"}>Signup for free</Link>
+        <Link href={"/auth/sign-in"}>Signup for free</Link>
       </Button>
     </div>
   );
