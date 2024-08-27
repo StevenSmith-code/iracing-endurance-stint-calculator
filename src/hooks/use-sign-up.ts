@@ -21,7 +21,7 @@ export const useSignUpForm = () => {
   const methods = useForm<UserRegistrationProps>({
     resolver: zodResolver(UserRegistrationSchema),
     defaultValues: {
-      type: "owner",
+      type: "user",
     },
     mode: "onChange",
   });

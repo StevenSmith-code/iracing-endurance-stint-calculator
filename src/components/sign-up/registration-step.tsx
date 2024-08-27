@@ -1,13 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import dynamic from "next/dynamic";
-import { useFormContext } from "react-hook-form";
+import dynamic from 'next/dynamic';
+import { useFormContext } from 'react-hook-form';
 
-import { Spinner } from "@/components/spinner";
-import { useAuthContextHook } from "@/context/use-auth-context";
+import { Spinner } from '@/components/spinner';
+import { useAuthContextHook } from '@/context/use-auth-context';
 
-import TypeSelectionForm from "./type-selection-form";
+import TypeSelectionForm from './type-selection-form';
 
 const DetailForm = dynamic(() => import("./account-details-form"), {
   ssr: false,
@@ -29,7 +29,7 @@ const RegistrationFormStep = (props: Props) => {
   } = useFormContext();
   const { currentStep } = useAuthContextHook();
   const [onOTP, setOnOTP] = useState<string>("");
-  const [onUserType, setOnUserType] = useState<"owner" | "student">("owner");
+  const [onUserType, setOnUserType] = useState<"owner" | "user">("owner");
 
   setValue("otp", onOTP);
 

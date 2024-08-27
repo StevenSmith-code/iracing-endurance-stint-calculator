@@ -1,12 +1,13 @@
-import React from "react";
+"use client";
+import React from 'react';
 
-import { Poppins } from "next/font/google";
-import localFont from "next/font/local";
-import Link from "next/link";
+import { Poppins } from 'next/font/google';
+import localFont from 'next/font/local';
+import { useRouter } from 'next/navigation';
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 const headingFont = localFont({
   src: "../../../public/fonts/font.woff2",
@@ -18,6 +19,7 @@ const textFont = Poppins({
 });
 
 export default function MarketingPage() {
+  const router = useRouter();
   return (
     <div className="flex items-center justify-center flex-col">
       <div
@@ -46,8 +48,12 @@ export default function MarketingPage() {
         We help you with your planning for any endurance race from stint
         management, fuel calculations, and roster management
       </div>
-      <Button className="mt-6 mb-40" size={"lg"} asChild>
-        <Link href={"/auth/sign-in"}>Signup for free</Link>
+      <Button
+        className="mt-6 mb-40"
+        size={"lg"}
+        onClick={() => router.push("/auth/sign-up")}
+      >
+        Sign up for free
       </Button>
     </div>
   );

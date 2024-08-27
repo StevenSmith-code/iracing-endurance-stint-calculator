@@ -21,8 +21,8 @@ type Props = {
   title: string;
   text: string;
   register: UseFormRegister<FieldValues>;
-  userType: "owner" | "student";
-  setUserType: React.Dispatch<React.SetStateAction<"owner" | "student">>;
+  userType: "owner" | "user";
+  setUserType: React.Dispatch<React.SetStateAction<"owner" | "user">>;
 };
 
 const UserTypeCard = ({
@@ -38,7 +38,7 @@ const UserTypeCard = ({
       <Card
         className={cn(
           "w-full cursor-pointer",
-          userType == value && "border-orange"
+          userType == value && "border-primary"
         )}
       >
         <CardContent className="flex justify-between p-2">

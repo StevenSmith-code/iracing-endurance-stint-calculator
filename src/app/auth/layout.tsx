@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Image from 'next/image';
 import { redirect } from 'next/navigation';
 
+import Logo from '@/components/logo';
 import { currentUser } from '@clerk/nextjs/server';
 
 type Props = {
@@ -17,29 +17,17 @@ const Layout = async ({ children }: Props) => {
   return (
     <div className="h-screen flex w-full justify-center">
       <div className="w-[600px] ld:w-full flex flex-col items-start p-6">
-        <Image
-          src="../../../public/logo.svg"
-          alt="LOGO"
-          sizes="100vw"
-          style={{
-            width: "20%",
-            height: "auto",
-          }}
-          width={0}
-          height={0}
-        />
+        <Logo />
         {children}
       </div>
       <div className="hidden lg:flex flex-1 w-full max-h-full max-w-4000px overflow-hidden relative bg-cream  flex-col pt-10 pl-24 gap-3">
         <h2 className="text-gravel md:text-4xl font-bold">
-          Hi, I’m your AI powered sales assistant, Corinna!
+          Welcome! Let&apos;s get you ready to manage your next endurance race.
         </h2>
         <p className="text-iridium md:text-sm mb-10">
-          Corinna is capable of capturing lead information without a form...{" "}
-          <br />
-          something never done before 😉
+          This is a reimagined version of the Sassy Enduro Manager
         </p>
-        <Image
+        {/* <Image
           src="/images/app-ui.png"
           alt="app image"
           loading="lazy"
@@ -47,7 +35,7 @@ const Layout = async ({ children }: Props) => {
           className="absolute shrink-0 !w-[1600px] top-48"
           width={0}
           height={0}
-        />
+        /> add image of dashboard */}
       </div>
     </div>
   );
