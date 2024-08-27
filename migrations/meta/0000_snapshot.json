@@ -1,0 +1,404 @@
+{
+  "id": "ef2efbb5-c599-40c4-a9bd-4c9156319e69",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.car": {
+      "name": "car",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fuelTankCapacity": {
+          "name": "fuelTankCapacity",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.car_track_laptime": {
+      "name": "car_track_laptime",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "trackId": {
+          "name": "trackId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "carId": {
+          "name": "carId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fuelPerLap": {
+          "name": "fuelPerLap",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "avgLaptime": {
+          "name": "avgLaptime",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "car_track_laptime_trackId_track_id_fk": {
+          "name": "car_track_laptime_trackId_track_id_fk",
+          "tableFrom": "car_track_laptime",
+          "tableTo": "track",
+          "columnsFrom": [
+            "trackId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "car_track_laptime_carId_car_id_fk": {
+          "name": "car_track_laptime_carId_car_id_fk",
+          "tableFrom": "car_track_laptime",
+          "tableTo": "car",
+          "columnsFrom": [
+            "carId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.event": {
+      "name": "event",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "trackId": {
+          "name": "trackId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "carId": {
+          "name": "carId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "presetName": {
+          "name": "presetName",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "raceDuration": {
+          "name": "raceDuration",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sessionStartGMT": {
+          "name": "sessionStartGMT",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "raceStartTimeOfDay": {
+          "name": "raceStartTimeOfDay",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "greenFlagOffset": {
+          "name": "greenFlagOffset",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pitDuration": {
+          "name": "pitDuration",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fuelTankSize": {
+          "name": "fuelTankSize",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stdStintFuelLaptime": {
+          "name": "stdStintFuelLaptime",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stdStintFuelPerLap": {
+          "name": "stdStintFuelPerLap",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fuelSaveStintLaptime": {
+          "name": "fuelSaveStintLaptime",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fuelSaveStintFuelPerLap": {
+          "name": "fuelSaveStintFuelPerLap",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "event_trackId_track_id_fk": {
+          "name": "event_trackId_track_id_fk",
+          "tableFrom": "event",
+          "tableTo": "track",
+          "columnsFrom": [
+            "trackId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "event_carId_car_id_fk": {
+          "name": "event_carId_car_id_fk",
+          "tableFrom": "event",
+          "tableTo": "car",
+          "columnsFrom": [
+            "carId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.track": {
+      "name": "track",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.user_event": {
+      "name": "user_event",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "userId": {
+          "name": "userId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "eventId": {
+          "name": "eventId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "avgLaptime": {
+          "name": "avgLaptime",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "user_event_userId_users_id_fk": {
+          "name": "user_event_userId_users_id_fk",
+          "tableFrom": "user_event",
+          "tableTo": "users",
+          "columnsFrom": [
+            "userId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "user_event_eventId_event_id_fk": {
+          "name": "user_event_eventId_event_id_fk",
+          "tableFrom": "user_event",
+          "tableTo": "event",
+          "columnsFrom": [
+            "eventId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "clerkId": {
+          "name": "clerkId",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "driverName": {
+          "name": "driverName",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "prefDriverColor": {
+          "name": "prefDriverColor",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gmtOffset": {
+          "name": "gmtOffset",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "iRating": {
+          "name": "iRating",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "users_clerkId_unique": {
+          "name": "users_clerkId_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "clerkId"
+          ]
+        }
+      }
+    }
+  },
+  "enums": {
+    "public.type": {
+      "name": "type",
+      "schema": "public",
+      "values": [
+        "owner",
+        "user"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
