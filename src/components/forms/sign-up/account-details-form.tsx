@@ -8,7 +8,7 @@ import {
 
 import { USER_REGISTRATION_FORM } from '@/constants/forms';
 
-import FormGenerator from '../form-generator';
+import FormGenerator from '../../form-generator';
 
 type Props = {
   register: UseFormRegister<FieldValues>;

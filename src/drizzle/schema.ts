@@ -15,7 +15,7 @@ export const type = pgEnum("type", ["owner", "user"]);
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   clerkId: varchar("clerkId").notNull().unique(),
-  driverName: varchar("driverName").notNull(),
+  fullname: varchar("driverName").notNull(),
   type: text("type").notNull(),
   prefDriverColor: text("prefDriverColor"),
   gmtOffset: integer("gmtOffset"),

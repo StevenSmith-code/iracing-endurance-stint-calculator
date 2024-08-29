@@ -9,28 +9,26 @@ import {
   currentUser,
 } from '@clerk/nextjs/server';
 
-// Function to handle user registration
 export const onCompleteUserRegistration = async (
   fullname: string,
   clerkId: string,
   type: string
 ) => {
   try {
-    // Insert a new user record into the database
     const [registered] = await db
       .insert(users)
       .values({
-        driverName: fullname,
+        fullname,
         clerkId,
         type,
-        prefDriverColor: "defaultColor", // Optional or use your default logic
-        gmtOffset: 0, // Optional or use your default logic
-        iRating: 1000, // Optional or use your default logic
-        role: "user", // Example role
-        updatedAt: new Date(), // Only if not defaulting in schema
+        prefDriverColor: "#AA4A44",
+        gmtOffset: 0,
+        iRating: 1000,
+        role: "user",
+        updatedAt: new Date(),
       })
       .returning({
-        driverName: users.driverName,
+        fullname: users.fullname,
         id: users.id,
         type: users.type,
       });
@@ -40,8 +38,7 @@ export const onCompleteUserRegistration = async (
       return { status: 200, user: registered };
     }
   } catch (error) {
-    // Handle any errors that occur during registration
-    return { status: 400 };
+    return { status: 400, Error: error };
   }
 };
 
@@ -55,7 +52,7 @@ export const onLoginUser = async () => {
       // Find the user record by Clerk ID
       const [authenticated] = await db
         .select({
-          driverName: users.driverName,
+          fullname: users.fullname,
           id: users.id,
           type: users.type,
         })
@@ -68,7 +65,7 @@ export const onLoginUser = async () => {
       }
     } catch (error) {
       // Handle any errors that occur during authentication
-      return { status: 400 };
+      return { status: 400, Error: error };
     }
   }
 };

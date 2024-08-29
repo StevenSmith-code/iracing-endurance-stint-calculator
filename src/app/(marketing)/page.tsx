@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Poppins } from 'next/font/google';
 import localFont from 'next/font/local';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -19,7 +19,6 @@ const textFont = Poppins({
 });
 
 export default function MarketingPage() {
-  const router = useRouter();
   return (
     <div className="flex items-center justify-center flex-col">
       <div
@@ -28,7 +27,7 @@ export default function MarketingPage() {
           headingFont.className
         )}
       >
-        <Badge className="mb-8 shadow-sm px-4 py-3 bg-primary text-foreground uppercase">
+        <Badge className="mb-8 shadow-sm px-4 py-2 bg-primary text-foreground uppercase">
           New website launched
         </Badge>
         <h1 className="text-3xl md:text-6xl text-center text-foreground mb-4 max-w-4xl">
@@ -48,12 +47,10 @@ export default function MarketingPage() {
         We help you with your planning for any endurance race from stint
         management, fuel calculations, and roster management
       </div>
-      <Button
-        className="mt-6 mb-40"
-        size={"lg"}
-        onClick={() => router.push("/auth/sign-up")}
-      >
-        Sign up for free
+      <Button className="mt-6 mb-40" size={"lg"} asChild>
+        <Link className="text-foreground" href={"/auth/sign-up"}>
+          Create an account for free.
+        </Link>
       </Button>
     </div>
   );

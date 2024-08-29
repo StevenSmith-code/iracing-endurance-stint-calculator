@@ -1,9 +1,9 @@
 import React from 'react';
 
-import ButtonHandler from '@/components/sign-up/button-handler';
-import SignUpFormProvider from '@/components/sign-up/form-provider';
-import HighLightBar from '@/components/sign-up/highlight-bar';
-import RegistrationFormStep from '@/components/sign-up/registration-step';
+import ButtonHandler from '@/components/forms/sign-up/button-handler';
+import SignUpFormProvider from '@/components/forms/sign-up/form-provider';
+import HighLightBar from '@/components/forms/sign-up/highlight-bar';
+import RegistrationFormStep from '@/components/forms/sign-up/registration-step';
 
 type Props = {};
 

@@ -26,14 +26,14 @@ export function Navbar() {
               className="bg-primary"
               asChild
             >
-              <Link className="text-foreground" href={"/sign-in"}>
+              <Link className="text-foreground" href={"/auth/sign-in"}>
                 Login
               </Link>
             </Button>
           ) : (
             <div className="flex items-center justify-center">
               <p className="text-md mr-4 text-center text-foreground">
-                Welcome back {user?.firstName}!
+                Welcome back {user?.fullName}!
               </p>
               <UserButton />
             </div>

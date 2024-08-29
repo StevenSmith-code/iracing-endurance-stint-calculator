@@ -6,7 +6,7 @@ import { FormProvider } from 'react-hook-form';
 import { AuthContextProvider } from '@/context/use-auth-context';
 import { useSignUpForm } from '@/hooks/use-sign-up';
 
-import { Loader } from '../loader';
+import { Loader } from '../../loader';
 
 type Props = {
   children: React.ReactNode;

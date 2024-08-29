@@ -90,9 +90,11 @@ export const useSignUpForm = () => {
           }
         }
       } catch (error: any) {
+        const errorMessage =
+          error?.errors?.[0]?.longMessage || "An unknown error occurred";
         toast({
           title: "Error",
-          description: error.errors[0].longMessage,
+          description: errorMessage,
         });
       }
     }
