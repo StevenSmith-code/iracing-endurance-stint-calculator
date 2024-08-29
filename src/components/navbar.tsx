@@ -1,19 +1,16 @@
-"use client";
 import React from 'react';
 
 import Link from 'next/link';
 
+import { getUserData } from '@/actions/dashboard';
 import { Button } from '@/components/ui/button';
-import {
-  UserButton,
-  useUser,
-} from '@clerk/nextjs';
+import { UserButton } from '@clerk/nextjs';
 
 import Logo from './logo';
 import { ModeToggle } from './mode-toggle';
 
-export function Navbar() {
-  const { user } = useUser();
+export async function Navbar() {
+  const user = await getUserData();
   return (
     <div className="fixed top-0 w-full h-14 px-4 shadow-sm bg-background flex items-center">
       <div className="md:max-w-screen-2xl mx-auto flex items-center w-full justify-between">
@@ -33,7 +30,7 @@ export function Navbar() {
           ) : (
             <div className="flex items-center justify-center">
               <p className="text-md mr-4 text-center text-foreground">
-                Welcome back {user?.fullName}!
+                Welcome back {user[0].fullname}!
               </p>
               <UserButton />
             </div>

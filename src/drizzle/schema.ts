@@ -6,7 +6,6 @@ import {
   serial,
   text,
   timestamp,
-  varchar,
 } from 'drizzle-orm/pg-core';
 
 export const type = pgEnum("type", ["owner", "user"]);
@@ -14,17 +13,15 @@ export const type = pgEnum("type", ["owner", "user"]);
 // Users Table
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
-  clerkId: varchar("clerkId").notNull().unique(),
-  fullname: varchar("driverName").notNull(),
+  clerkId: text("clerkId").notNull().unique(),
+  fullname: text("fullname").notNull(),
   type: text("type").notNull(),
   prefDriverColor: text("prefDriverColor"),
   gmtOffset: integer("gmtOffset"),
   iRating: integer("iRating"),
-  role: text("role").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()
-    .notNull()
     .$onUpdate(() => new Date()),
 });
 // Event Table
@@ -36,7 +33,7 @@ export const event = pgTable("event", {
   carId: integer("carId")
     .references(() => car.id)
     .notNull(),
-  presetName: varchar("presetName").notNull(),
+  presetName: text("presetName").notNull(),
   raceDuration: integer("raceDuration").notNull(),
   sessionStartGMT: integer("sessionStartGMT").notNull(),
   raceStartTimeOfDay: integer("raceStartTimeOfDay").notNull(),

@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS "event" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"trackId" integer NOT NULL,
 	"carId" integer NOT NULL,
-	"presetName" varchar NOT NULL,
+	"presetName" text NOT NULL,
 	"raceDuration" integer NOT NULL,
 	"sessionStartGMT" integer NOT NULL,
 	"raceStartTimeOfDay" integer NOT NULL,
@@ -49,15 +49,14 @@ CREATE TABLE IF NOT EXISTS "user_event" (
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "users" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"clerkId" varchar NOT NULL,
-	"driverName" varchar NOT NULL,
+	"clerkId" text NOT NULL,
+	"fullname" text NOT NULL,
 	"type" text NOT NULL,
 	"prefDriverColor" text,
 	"gmtOffset" integer,
 	"iRating" integer,
-	"role" text NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
-	"updated_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now(),
 	CONSTRAINT "users_clerkId_unique" UNIQUE("clerkId")
 );
 --> statement-breakpoint

@@ -21,19 +21,12 @@ export const onCompleteUserRegistration = async (
         fullname,
         clerkId,
         type,
-        prefDriverColor: "#AA4A44",
-        gmtOffset: 0,
-        iRating: 1000,
-        role: "user",
-        updatedAt: new Date(),
       })
       .returning({
         fullname: users.fullname,
         id: users.id,
         type: users.type,
       });
-
-    // If registration is successful, return the registered user data
     if (registered) {
       return { status: 200, user: registered };
     }

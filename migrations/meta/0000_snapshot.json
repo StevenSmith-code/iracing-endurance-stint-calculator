@@ -1,5 +1,5 @@
 {
-  "id": "256daeba-d05a-4bc3-b325-174d41c8cf21",
+  "id": "5a5ab702-b0d6-463f-9cfa-64c73cd6cecb",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -123,7 +123,7 @@
         },
         "presetName": {
           "name": "presetName",
-          "type": "varchar",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
@@ -315,13 +315,13 @@
         },
         "clerkId": {
           "name": "clerkId",
-          "type": "varchar",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "driverName": {
-          "name": "driverName",
-          "type": "varchar",
+        "fullname": {
+          "name": "fullname",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
@@ -349,12 +349,6 @@
           "primaryKey": false,
           "notNull": false
         },
-        "role": {
-          "name": "role",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
         "created_at": {
           "name": "created_at",
           "type": "timestamp",
@@ -366,7 +360,7 @@
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "default": "now()"
         }
       },
