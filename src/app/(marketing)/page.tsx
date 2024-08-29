@@ -1,13 +1,14 @@
-"use client";
 import React from 'react';
 
 import { Poppins } from 'next/font/google';
 import localFont from 'next/font/local';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { currentUser } from '@clerk/nextjs/server';
 
 const headingFont = localFont({
   src: "../../../public/fonts/font.woff2",
@@ -18,7 +19,10 @@ const textFont = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-export default function MarketingPage() {
+export default async function MarketingPage() {
+  const user = await currentUser();
+
+  if (user) redirect("/dashboard");
   return (
     <div className="flex items-center justify-center flex-col">
       <div

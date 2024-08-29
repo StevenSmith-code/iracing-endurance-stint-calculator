@@ -3,7 +3,7 @@ import React from 'react';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
 
-export default function MarketingLayout({
+export default async function MarketingLayout({
   children,
 }: {
   children: React.ReactNode;

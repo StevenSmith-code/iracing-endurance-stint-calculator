@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 
+import { revalidatePath } from 'next/cache';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
@@ -80,7 +81,7 @@ export const useSignUpForm = () => {
             });
 
             setLoading(false);
-            router.push("/dashboard");
+            revalidatePath("/dashboard");
           }
 
           if (registered?.status == 400) {

@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 import { getUserData } from '@/actions/dashboard';
 import { Button } from '@/components/ui/button';
-import { UserButton } from '@clerk/nextjs';
 
 import Logo from './logo';
 import { ModeToggle } from './mode-toggle';
@@ -32,7 +31,6 @@ export async function Navbar() {
               <p className="text-md mr-4 text-center text-foreground">
                 Welcome back {user[0].fullname}!
               </p>
-              <UserButton />
             </div>
           )}
           <ModeToggle />
