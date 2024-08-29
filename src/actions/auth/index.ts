@@ -38,7 +38,7 @@ export const onCompleteUserRegistration = async (
       return { status: 200, user: registered };
     }
   } catch (error) {
-    return { status: 400, Error: error };
+    return { status: 400, Error: String(error) };
   }
 };
 
@@ -65,7 +65,7 @@ export const onLoginUser = async () => {
       }
     } catch (error) {
       // Handle any errors that occur during authentication
-      return { status: 400, Error: error };
+      return { status: 400, Error: String(error) };
     }
   }
 };

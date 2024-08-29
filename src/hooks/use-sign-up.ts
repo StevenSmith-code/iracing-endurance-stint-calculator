@@ -74,6 +74,7 @@ export const useSignUpForm = () => {
           );
 
           if (registered?.status == 200 && registered.user) {
+            console.log("Created Session ID:", completeSignUp.createdSessionId);
             await setActive({
               session: completeSignUp.createdSessionId,
             });
