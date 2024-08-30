@@ -9,13 +9,17 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { useEventStore } from '@/context/event-name-store';
 import { ErrorMessage } from '@hookform/error-message';
+
+import { EventToolTip } from '../tool-tip';
 
 type Props = {
   type: "text" | "email" | "password";
   inputType: "select" | "input" | "textarea";
   options?: { value: string; label: string; id: string }[];
   label?: string;
+  toolTipDescription?: string;
   placeholder: string;
   register: UseFormRegister<any>;
   name: string;
@@ -30,6 +34,7 @@ const FormGenerator = ({
   inputType,
   name,
   placeholder,
+  toolTipDescription,
   defaultValue,
   register,
   type,
@@ -38,12 +43,18 @@ const FormGenerator = ({
   lines,
   options,
 }: Props) => {
+  const setEventName = useEventStore((state) => state.setEventName);
   switch (inputType) {
     case "input":
     default:
       return (
         <Label className="flex flex-col gap-2" htmlFor={`input-${label}`}>
-          {label && label}
+          <div className="flex justify-between items-center">
+            {label && label}{" "}
+            {toolTipDescription && (
+              <EventToolTip description={toolTipDescription} />
+            )}
+          </div>
           <Input
             id={`input-${label}`}
             type={type}
@@ -51,6 +62,11 @@ const FormGenerator = ({
             form={form}
             defaultValue={defaultValue}
             {...register(name)}
+            onChange={(e) => {
+              if (name === "presetName") {
+                setEventName!(e.target.value);
+              }
+            }}
           />
           <ErrorMessage
             errors={errors}

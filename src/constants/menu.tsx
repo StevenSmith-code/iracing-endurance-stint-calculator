@@ -28,10 +28,10 @@ export const SIDE_BAR_MENU: SIDE_BAR_MENU_PROPS[] = [
   },
 ];
 
-type TABS_MENU_PROPS = {
-  label: string;
-  icon?: JSX.Element;
-};
+// type TABS_MENU_PROPS = {
+//   label: string;
+//   icon?: JSX.Element;
+// };
 
 // export const TABS_MENU: TABS_MENU_PROPS[] = [
 //   {

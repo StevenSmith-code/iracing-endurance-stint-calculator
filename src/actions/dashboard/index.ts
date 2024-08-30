@@ -2,7 +2,11 @@
 
 import { eq } from 'drizzle-orm';
 
-import { users } from '@/drizzle/schema';
+import {
+  car,
+  track,
+  users,
+} from '@/drizzle/schema';
 import { db } from '@/lib/db';
 import { currentUser } from '@clerk/nextjs/server';
 
@@ -18,8 +22,21 @@ export const getUserData = async () => {
       if (userDetails) {
         return userDetails;
       }
+      return null;
     }
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const getCarsAndTracks = async () => {
+  try {
+    const cars = await db.select().from(car);
+    const tracks = await db.select().from(track);
+    if (cars && tracks) {
+      return [cars, tracks];
+    }
+  } catch (error) {
+    console.error(error);
   }
 };
