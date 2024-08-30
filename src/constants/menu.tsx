@@ -1,6 +1,6 @@
 import {
   Calendar,
-  Cog,
+  CogIcon,
   LayoutDashboard,
 } from 'lucide-react';
 
@@ -13,18 +13,18 @@ type SIDE_BAR_MENU_PROPS = {
 export const SIDE_BAR_MENU: SIDE_BAR_MENU_PROPS[] = [
   {
     label: "Dashboard",
-    icon: <LayoutDashboard />,
-    path: "dashboard",
+    icon: <LayoutDashboard size={20} />,
+    path: "/dashboard",
   },
   {
     label: "Scheduling",
-    icon: <Calendar />,
-    path: "scheduling",
+    icon: <Calendar size={20} />,
+    path: "/scheduling",
   },
   {
     label: "Settings",
-    icon: <Cog />,
-    path: "settings",
+    icon: <CogIcon size={20} />,
+    path: "/settings",
   },
 ];
 

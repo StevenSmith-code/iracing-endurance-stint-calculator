@@ -11,7 +11,7 @@ const DashboardLayout = ({ children }: Props) => {
   return (
     <div>
       <Navbar />
-      <div className="flex mt-20">
+      <div className="flex mt-14">
         <Sidebar />
         <main className="">{children}</main>
       </div>
