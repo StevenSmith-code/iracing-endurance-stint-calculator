@@ -18,7 +18,6 @@ const EventConfigCard = () => {
     register,
     formState: { errors },
   } = useFormContext();
-  //   const carsAndTracks = await getCarsAndTracks();
   return (
     <Card>
       <CardHeader>

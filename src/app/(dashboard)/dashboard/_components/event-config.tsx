@@ -19,6 +19,13 @@ const EventConfig = () => {
             <Loader loading={loading}>
               <EventConfigCard />
             </Loader>
+            <button
+              type="submit"
+              disabled={loading}
+              className="btn btn-primary"
+            >
+              Submit
+            </button>
           </div>
         </form>
       </FormProvider>

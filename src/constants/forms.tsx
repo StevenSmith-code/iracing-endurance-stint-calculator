@@ -143,7 +143,7 @@ export const EVENT_CONFIG_FORM: EventConfigProps[] = [
     inputType: "input",
     label: "Standard Fuel per Lap",
     placeholder: "0.74",
-    name: "stdStintFuelLaptime",
+    name: "stdStintFuelPerLap",
     type: "text",
   },
   {

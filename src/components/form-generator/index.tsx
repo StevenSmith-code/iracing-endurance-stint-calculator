@@ -43,7 +43,7 @@ const FormGenerator = ({
   lines,
   options,
 }: Props) => {
-  const setEventName = useEventStore((state) => state.setEventName);
+  const setEventName = useEventStore((state) => state.setEventDetails);
   switch (inputType) {
     case "input":
     default:
@@ -64,7 +64,7 @@ const FormGenerator = ({
             {...register(name)}
             onChange={(e) => {
               if (name === "presetName") {
-                setEventName!(e.target.value);
+                setEventName!({ presetName: e.target.value });
               }
             }}
           />

@@ -18,7 +18,7 @@ const DashboardPage = async (props: Props) => {
       <EventBreadcrumb user={user![0]} />
       <section className="grid xl:grid-cols-6">
         <EventConfig />
-        <div className="flex flex-col xl:col-span-4 xl:col-start-3 justify-around">
+        <div className="flex flex-col xl:col-span-3 xl:col-start-3 justify-around items-center">
           <FuelStintAvgTimesCard className={"xl:h-1/4"} />
           <FinalFuelStintCalculatorCard />
           <RealTimeDeltasCard className="xl:h-1/4" />
