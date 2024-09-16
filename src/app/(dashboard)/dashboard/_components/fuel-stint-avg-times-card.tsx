@@ -14,7 +14,7 @@ type Props = {
 const FuelStintAvgTimesCard = ({ className }: Props) => {
   return (
     <Card className={`w-full max-w-3xl bg-card ${className}`}>
-      <CardHeader className="bg-primary text-foreground">
+      <CardHeader className="bg-primary text-primary-foreground">
         <CardTitle className="text-center">Fuel Stint Average Times</CardTitle>
       </CardHeader>
       <CardContent className="p-0">

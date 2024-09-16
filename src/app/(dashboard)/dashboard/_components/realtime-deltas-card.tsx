@@ -12,8 +12,10 @@ export default function RealTimeDeltasCard({
 }) {
   return (
     <Card className={`w-full max-w-md bg-card ${className}`}>
-      <CardHeader className="bg-primary text-foreground p-2">
-        <CardTitle className="text-center text-lg">Realtime Deltas</CardTitle>
+      <CardHeader className="bg-primary p-2">
+        <CardTitle className="text-center text-primary-foreground text-lg">
+          Realtime Deltas
+        </CardTitle>
       </CardHeader>
       <CardContent className="p-0">
         <table className="w-full text-sm">
