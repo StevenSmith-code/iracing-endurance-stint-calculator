@@ -1,14 +1,28 @@
-import React from 'react'
+"use client"
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+import type React from "react"
+
+import { AppSidebar } from "@/app/(dashboard)/dashboard/_components/sidebar"
+import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar"
+
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const { open } = useSidebar()
+
   return (
-    <div>
-        <div>
-            <h1>Dashboard</h1>
-        </div>
-        {children}
+    <div className="flex h-screen bg-background">
+      <AppSidebar />
+      <div className={`flex-1 flex flex-col transition-all duration-300 ease-in-out ${open ? "md:ml-4" : "md:ml-16"}`}>
+        <header className="sticky top-0 z-10 flex h-16 items-center bg-background px-4 border-b border-border">
+          <SidebarTrigger />
+          <h1 className="ml-4 text-2xl font-bold text-red-500">Race Dashboard</h1>
+        </header>
+        <main className="flex-1 overflow-auto p-4">{children}</main>
+      </div>
     </div>
   )
 }
 
-export default layout
