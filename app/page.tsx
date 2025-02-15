@@ -32,11 +32,11 @@ export default function LandingPage() {
           <p className="text-xl md:text-2xl mb-8 text-gray-300">
             Optimize your iRacing endurance race performance with precision fuel calculations
           </p>
-          <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white">
-            Try It Now
-          </Button>
+          <Link href="/dashboard">
+            <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white">
+            Get Started</Button>
+          </Link>
         </section>
-
         <section id="features" className="bg-gray-800 py-20">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Features</h2>
