@@ -1,45 +1,113 @@
+"use client"
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { InfoIcon, Clock } from "lucide-react"
+import dayjs from "dayjs"
+import utc from "dayjs/plugin/utc"
+import timezone from "dayjs/plugin/timezone"
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 export default function DashboardPage() {
+  const [currentTime, setCurrentTime] = useState(dayjs().utc().format("HH:mm"))
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(dayjs().utc().format("HH:mm"))
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <div className="space-y-4">
       <p className="text-gray-400">Manage your race strategy and fuel calculations</p>
-
+      <div className="flex items-center justify-center gap-2 border border-gray-600 rounded-md p-2">
+        <p className="text-gray-300 xl:text-lg">Current GMT: {currentTime}</p>
+        <Clock className="w-4 h-4" />
+      </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {/* Overall Event Config */}
         <Card className="border-gray-800 bg-gray-800">
-          <CardHeader className="bg-red-500 border-b border-gray-600">
+          <CardHeader className="bg-red-500 border-b border-gray-600 rounded-t-md">
             <CardTitle className="text-white font-bold">Overall Event Config</CardTitle>
           </CardHeader>
           <CardContent className="pt-4">
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
-                <Label className="text-gray-300">Race Duration</Label>
+                <div className="flex items-center gap-2">
+                  <Label className="text-gray-300">Race Duration</Label>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <InfoIcon className="w-4 h-4" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Duration of race in hh:mm:ss format.</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Input
                   defaultValue="2:40:00"
                   className="bg-gray-700 border-gray-600 text-white focus:border-red-500 focus:ring-red-500"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <Label className="text-gray-300">Session Start (GMT)</Label>
+                <div className="flex items-center gap-2">
+                  <Label className="text-gray-300">Session Start (GMT)</Label>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <InfoIcon className="w-4 h-4" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>GMT start according to real world "Clock Time".</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Input
                   defaultValue="8/25/2024 2:00:00 PM"
                   className="bg-gray-700 border-gray-600 text-white focus:border-red-500 focus:ring-red-500"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <Label className="text-gray-300">Race Start (GMT)</Label>
+                <div className="flex items-center gap-2">
+                  <Label className="text-gray-300">Race Start (GMT)</Label>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <InfoIcon className="w-4 h-4" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>GMT start according to real world "Clock Time".</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Input
                   defaultValue="8/25/2024 2:11:00 PM"
                   className="bg-gray-700 border-gray-600 text-white focus:border-red-500 focus:ring-red-500"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <Label className="text-gray-300">Green Flag Offset</Label>
+                <div className="flex items-center gap-2">
+                  <Label className="text-gray-300">Green Flag Offset</Label>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <InfoIcon className="w-4 h-4" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>
+                        Delay between the start of the session and the start of the first fuel stint.
+                        <br />
+                        Adjust this to account for session load time, qualifying if applicable, and
+                        formation lap duration.
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Input
                   defaultValue="0:11:00"
                   className="bg-gray-700 border-gray-600 text-white focus:border-red-500 focus:ring-red-500"
@@ -51,7 +119,7 @@ export default function DashboardPage() {
 
         {/* Fuel Stint Average Times */}
         <Card className="border-gray-800 bg-gray-800">
-          <CardHeader className="bg-red-500 border-b border-gray-600">
+          <CardHeader className="bg-red-500 border-b border-gray-600 rounded-t-md">
             <CardTitle className="text-white font-bold">Fuel Stint Average Times</CardTitle>
           </CardHeader>
           <CardContent className="pt-4">
@@ -81,31 +149,71 @@ export default function DashboardPage() {
 
         {/* Overall Fuel Stint Config */}
         <Card className="border-gray-800 bg-gray-800">
-          <CardHeader className="bg-red-500 border-b border-gray-600">
+          <CardHeader className="bg-red-500 border-b border-gray-600 rounded-t-md">
             <CardTitle className="text-white font-bold">Overall Fuel Stint Config</CardTitle>
           </CardHeader>
           <CardContent className="pt-4">
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
-                <Label className="text-gray-300">Pit Duration</Label>
+                <div className="flex items-center gap-2">
+                  <Label className="text-gray-300">Pit Duration</Label>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <InfoIcon className="w-4 h-4" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Base time for pit stop without tire change in hh:mm:ss format.</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Input
                   defaultValue="0:01:15"
                   className="bg-gray-700 border-gray-600 text-white focus:border-red-500 focus:ring-red-500"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <Label className="text-gray-300">Fuel Tank Size</Label>
+                <div className="flex items-center gap-2">
+                  <Label className="text-gray-300">Fuel Tank Size</Label>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <InfoIcon className="w-4 h-4" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Maximum fuel capacity in gallons/liters.</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Input
                   defaultValue="19.81"
                   className="bg-gray-700 border-gray-600 text-white focus:border-red-500 focus:ring-red-500"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <Label className="text-gray-300">Add Tire Time?</Label>
+                <div className="flex items-center gap-2">
+                  <Label className="text-gray-300">Add Tire Time?</Label>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <InfoIcon className="w-4 h-4" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Include tire change time in pit stop calculations.</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Checkbox className="border-red-500 data-[state=checked]:bg-red-500 data-[state=checked]:text-white" />
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <Label className="text-gray-300">Tire Change Time</Label>
+                <div className="flex items-center gap-2">
+                  <Label className="text-gray-300">Tire Change Time</Label>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <InfoIcon className="w-4 h-4" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Additional time for tire change in hh:mm:ss format.</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Input
                   defaultValue="0:00:30"
                   className="bg-gray-700 border-gray-600 text-white focus:border-red-500 focus:ring-red-500"
@@ -117,7 +225,7 @@ export default function DashboardPage() {
 
         {/* Time of Day Lap Factors */}
         <Card className="border-gray-800 bg-gray-800">
-          <CardHeader className="bg-red-500 border-b border-gray-600">
+          <CardHeader className="bg-red-500 border-b border-gray-600 rounded-t-md">
             <CardTitle className="text-white font-bold">Time of Day Lap Factors</CardTitle>
           </CardHeader>
           <CardContent className="pt-4">
@@ -152,7 +260,7 @@ export default function DashboardPage() {
 
         {/* Manual Fuel Stint Calculator */}
         <Card className="border-gray-800 bg-gray-800">
-          <CardHeader className="bg-red-500 border-b border-gray-600">
+          <CardHeader className="bg-red-500 border-b border-gray-600 rounded-t-md">
             <CardTitle className="text-white font-bold">Manual Fuel Stint Calculator</CardTitle>
           </CardHeader>
           <CardContent className="pt-4">
@@ -187,7 +295,7 @@ export default function DashboardPage() {
 
         {/* Final Fuel Stint Calculator */}
         <Card className="border-gray-800 bg-gray-800">
-          <CardHeader className="bg-red-500 border-b border-gray-600">
+          <CardHeader className="bg-red-500 border-b border-gray-600 rounded-t-md">
             <CardTitle className="text-white font-bold">Final Fuel Stint Calculator</CardTitle>
           </CardHeader>
           <CardContent className="pt-4">
