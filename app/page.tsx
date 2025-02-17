@@ -5,7 +5,7 @@ import { Flag, Fuel, Clock, BarChart } from "lucide-react"
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen w-screen bg-gray-900 text-white">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold text-red-500">
           FuelStint
