@@ -27,10 +27,10 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-4">
-      <p className="text-gray-400">Manage your race strategy and fuel calculations</p>
+      <p className="text-muted-foreground">Manage your race strategy and fuel calculations</p>
       <div className="flex items-center justify-center gap-2 border border-gray-600 rounded-md p-2">
-        <p className="text-gray-300 xl:text-lg">Current GMT: {currentTime}</p>
         <Clock className="w-4 h-4" />
+        <p className="text-primary xl:text-lg">Current GMT: {currentTime}</p>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {/* Overall Event Config */}
@@ -127,6 +127,7 @@ export default function DashboardPage() {
               <TableHeader>
                 <TableRow className="border-gray-700">
                   <TableHead className="text-gray-300">Stint Type</TableHead>
+                  <TableHead className="text-gray-300">Average lap time</TableHead>
                   <TableHead className="text-gray-300">Fuel per Lap</TableHead>
                   <TableHead className="text-gray-300">Lap Count</TableHead>
                 </TableRow>
@@ -134,12 +135,34 @@ export default function DashboardPage() {
               <TableBody>
                 <TableRow className="border-gray-700">
                   <TableCell className="text-white">Standard Fuel Stint</TableCell>
-                  <TableCell className="text-white">0.85</TableCell>
+                  <TableCell className="text-white">
+                    <Input
+                      defaultValue="0:01:45"
+                      className="bg-gray-700 border-gray-600 text-white focus:border-red-500 focus:ring-red-500"
+                    />
+                  </TableCell>
+                  <TableCell className="text-white">
+                    <Input
+                      defaultValue="0.85"
+                      className="bg-gray-700 border-gray-600 text-white focus:border-red-500 focus:ring-red-500 w-1/4"
+                    />
+                  </TableCell>
                   <TableCell className="text-white">23</TableCell>
                 </TableRow>
                 <TableRow className="border-gray-700">
                   <TableCell className="text-white">Fuel Saving Stint</TableCell>
-                  <TableCell className="text-white">0.84</TableCell>
+                  <TableCell className="text-white">
+                    <Input
+                      defaultValue="0:01:45"
+                      className="bg-gray-700 border-gray-600 text-white focus:border-red-500 focus:ring-red-500"
+                    />
+                  </TableCell>
+                  <TableCell className="text-white">
+                  <Input
+                      defaultValue="0.85"
+                      className="bg-gray-700 border-gray-600 text-white focus:border-red-500 focus:ring-red-500 w-1/4"
+                    />
+                  </TableCell>
                   <TableCell className="text-white">23</TableCell>
                 </TableRow>
               </TableBody>
