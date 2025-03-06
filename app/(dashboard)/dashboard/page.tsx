@@ -4,12 +4,12 @@ import { Clock } from "lucide-react"
 import dayjs from "dayjs"
 import utc from "dayjs/plugin/utc"
 import timezone from "dayjs/plugin/timezone"
-import { EventConfigCard } from "../_components/EventConfigCard"
-import { FuelStintTimesCard } from "../_components/FuelStintTimesCard"
-import { FuelStintConfigCard } from "../_components/FuelStintConfigCard"
-import { TimeOfDayFactorsCard } from "../_components/TimeOfDayFactorsCard"
-import { ManualFuelCalculatorCard } from "../_components/ManualFuelCalculatorCard"
-import { FinalFuelCalculatorCard } from "../_components/FinalFuelCalculatorCard"
+import { EventConfigCard } from "./_components/EventConfigCard"
+import { FuelStintTimesCard } from "./_components/FuelStintTimesCard"
+import { FuelStintConfigCard } from "./_components/FuelStintConfigCard"
+import { TimeOfDayFactorsCard } from "./_components/TimeOfDayFactorsCard"
+import { ManualFuelCalculatorCard } from "./_components/ManualFuelCalculatorCard"
+import { FinalFuelCalculatorCard } from "./_components/FinalFuelCalculatorCard"
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
