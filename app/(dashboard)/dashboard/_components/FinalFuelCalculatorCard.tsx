@@ -12,17 +12,21 @@ export function FinalFuelCalculatorCard() {
               <TableHeader>
                 <TableRow className="border-gray-700">
                   <TableHead className="text-gray-300">Stint</TableHead>
+                  <TableHead className="text-gray-300">GMT Start</TableHead>
                   <TableHead className="text-gray-300">Duration</TableHead>
                   <TableHead className="text-gray-300">Std Fuel</TableHead>
                   <TableHead className="text-gray-300">FS Fuel</TableHead>
+                  <TableHead className="text-gray-300">FS Xtra</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 <TableRow className="border-gray-700">
                   <TableCell className="text-white">30</TableCell>
+                  <TableCell className="text-white">12:00</TableCell>
                   <TableCell className="text-white">0:23:59</TableCell>
                   <TableCell className="text-white">12.78</TableCell>
                   <TableCell className="text-white">12.53</TableCell>
+                  <TableCell className="text-white">0.25</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
